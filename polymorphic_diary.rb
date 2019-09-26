@@ -27,7 +27,7 @@ class AdvancingChars
         return scrambled_chars.join
     end
 
-    def unscramble_by_advancing_chars(steps, string)
+    def unscramble(steps, string)
         if !valid_steps_no?(steps) raise 'Tried to scramble by advancing characters 0 steps.'
         
         scrambled_chars = string.chars
@@ -45,11 +45,11 @@ class AdvancingChars
 end
 
 class ReversingChars
-    def scramble_by_reversing(steps, string)
+    def scramble(steps, string)
         return string.reverse
     end
 
-    def unscramble_by_reversing(steps, string)
+    def unscramble(steps, string)
         return string.reverse
     end
 end
