@@ -17,8 +17,10 @@ class ScrambledDiary
 end
 
 class AdvancingChars
-    def scramble(steps, string)
-        if !valid_steps_no?(steps) raise 'Tried to scramble by advancing characters 0 steps.'
+    ERROR_MESSAGE = 'Tried to scramble by advancing characters 0 steps.'
+
+    def self.scramble(steps, string)
+        raise ERROR_MESSAGE unless valid_steps_no?(steps)
         
         plain_chars = string.chars
         scrambled_chars = plain_chars.map do |char|
@@ -27,8 +29,8 @@ class AdvancingChars
         return scrambled_chars.join
     end
 
-    def unscramble(steps, string)
-        if !valid_steps_no?(steps) raise 'Tried to scramble by advancing characters 0 steps.'
+    def self.unscramble(steps, string)
+        raise ERROR_MESSAGE unless valid_steps_no?(steps)
         
         scrambled_chars = string.chars
         plain_chars = scrambled_chars.map do |char|
@@ -39,17 +41,17 @@ class AdvancingChars
 
     private
 
-    def valid_steps_no?(steps)
+    def self.valid_steps_no?(steps)
         steps > 0
     end
 end
 
 class ReversingChars
-    def scramble(steps, string)
+    def self.scramble(steps, string)
         return string.reverse
     end
 
-    def unscramble(steps, string)
+    def self.unscramble(steps, string)
         return string.reverse
     end
 end
