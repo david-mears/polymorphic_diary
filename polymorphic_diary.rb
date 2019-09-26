@@ -1,10 +1,10 @@
 class ScrambledDiary
     def initialize(contents)
-      @contents = contents
+        @contents = contents
     end
   
     def read
-      @contents
+        @contents
     end
 
     def scramble(steps=0, scramble_type)
@@ -13,6 +13,17 @@ class ScrambledDiary
 
     def unscramble(steps=0)
         @contents = scramble_type.unscramble(steps, @contents)
+    end
+end
+
+
+class ReversingChars
+    def self.scramble(_steps, string)
+        string.reverse
+    end
+
+    def self.unscramble(_steps, string)
+        string.reverse
     end
 end
 
@@ -26,7 +37,7 @@ class AdvancingChars
         scrambled_chars = plain_chars.map do |char|
           (char.ord + steps).chr
         end
-        return scrambled_chars.join
+        scrambled_chars.join
     end
 
     def self.unscramble(steps, string)
@@ -36,22 +47,12 @@ class AdvancingChars
         plain_chars = scrambled_chars.map do |char|
           (char.ord - steps).chr
         end
-        return plain_chars.join
+        plain_chars.join
     end
 
-    private
+    private_class_method :valid_steps_no?
 
     def self.valid_steps_no?(steps)
-        steps > 0
-    end
-end
-
-class ReversingChars
-    def self.scramble(steps, string)
-        return string.reverse
-    end
-
-    def self.unscramble(steps, string)
-        return string.reverse
+        steps.positive?
     end
 end
