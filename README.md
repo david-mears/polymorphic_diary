@@ -15,4 +15,4 @@ diary.scramble(scramble_type=ReversingChars) # No steps argument
 
 That forced me to protect AdvancingChars from people accidentally calling `diary.scramble(scramble_type=AdvancingChars)` without `steps` such that steps defaults to 0, which would result in a scramble with no effect. So I added a validation step in there, which fails out of the insecure scramble by raising an error.
 
-It occurs to me that perhaps this is bad practice because I had to add a validation step, which could later break or simply be bad for performanth.
+It occurs to me that perhaps this is bad practice because I had to (a) remember to add a validation step, (b) which could later break or (c) simply be bad for performanth.
